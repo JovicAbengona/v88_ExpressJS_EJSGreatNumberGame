@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="https://learn.village88.com/assets/black_ninja-9adea777014ced1d5d36046555cf036c.ico?v=2" type="image/x-icon">
+        <link rel="stylesheet" href="/stylesheets/index.css">
+        <script src="https://kit.fontawesome.com/929adf1879.js" crossorigin="anonymous"></script>
+        <title>Village88 | NodeJS (Express) | Great Number Game</title>
+    </head>
+    <body>
+        <header>
+            <h1>Welcome to the Great Number Game!</h1>
+        </header>
+        <section>
+            <p>I am thinking of a number between 1 to 100</p>
+            <p>Take a guess!</p>
+            <% if(data.status == "Correct"){ %>
+                <p class="success"><%= data.number %> was the number!</p>
+                <a href="/reset">Play Again!</a>
+            <% } 
+            else if(data.status == "Lower"){ %>
+                <p class="error">Too High!</p>
+                <form action="/process" method="POST">
+                    <input type="number" name="guess" required>
+                    <input type="submit" class="submit" value="Submit">
+                </form>
+            <% } 
+            else if(data.status == "Higher"){ %>
+                <p class="error">Too Low!</p>
+                <form action="/process" method="POST">
+                    <input type="number" name="guess" required>
+                    <input type="submit" class="submit" value="Submit">
+                </form>
+            <% } 
+            else{ %>
+                <form action="/process" method="POST">
+                    <input type="number" name="guess" required>
+                    <input type="submit" class="submit" value="Submit">
+                </form>
+            <% } %>
+        </section>
+    </body>
+</html>
